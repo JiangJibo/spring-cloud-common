@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/JiangJibo/spring-cloud-config/
+          searchPaths: bank,respo
+          username:
+          password:
+        prefix: spring-cloud/config
+      label: master
+
+  application:
+    name: spring-cloud-config
+
+server:
+  port: 8888
+
+# 设置Refresh容器时不需要安全校验
+management:
+  security:
+    enabled: false

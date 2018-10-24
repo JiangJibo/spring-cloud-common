@@ -1,0 +1,15 @@
+
+ spring:
+   application:
+     #代表项目里文件名称的前缀：bank-account
+     name: bank-namesrv
+
+   cloud:
+      config:
+        #代表项目里文件名称的的中间段：-dev
+        profile: dev
+        # 代表git上配置所属分支名称
+        label: master
+        uri: http://localhost:8888/spring-cloud/config
+
+#以上两个配置指定里配置文件的名称：bank-namesrv-dev.properties 或者 bank-namesrv-dev.yml

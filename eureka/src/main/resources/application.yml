@@ -1,0 +1,10 @@
+server:
+  #服务注册中心端口号
+  port: 8761
+
+logging:
+  level:
+    root: debug
+
+
+

@@ -1,0 +1,27 @@
+
+
+eureka:
+  server:
+    enable-self-preservation: false
+  client:
+  #是否向服务注册中心注册自己
+    registerWithEureka: false
+      #是否检索服务
+    fetchRegistry: false
+
+    serviceUrl:
+      # 指定Zone和Server地址的映射; 当有多个zone符合时, 默认选择第一个; 一个zone可以有多个应用,也就是多个Server,
+      # 多个URL之间不要有空格,否则在解析URL时会出现异常
+      defaultZone: http://localhost:8761/eureka/
+    # 指定给当前Client属于哪个Region
+    region: china
+    # 指定当前应用有哪些可用的Zone
+    availability-zones:
+      china: defaultZone,hangzhou
+  # 禁止Eureka的自我保护机制
+
+
+
+  instance:
+    prefer-ip-address: true
+
