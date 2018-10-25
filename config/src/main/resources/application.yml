@@ -4,7 +4,7 @@ spring:
       server:
         git:
           uri: https://github.com/JiangJibo/spring-cloud-common/
-          searchPaths: profile/bank,profile/respo
+          searchPaths: profile,profile/bank,profile/respo
           username:
           password:
         prefix: spring-cloud/config
