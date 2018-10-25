@@ -2,7 +2,7 @@
  spring:
    application:
      #代表项目里文件名称的前缀：bank-account
-     name: bank-namesrv
+     name: bank-eureka
 
    cloud:
       config:
