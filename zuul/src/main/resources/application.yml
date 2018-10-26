@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: zuul
+
+zuul:
+  routes:
+    users:
+      path: /users/**
+      serviceId: bank-user
+
