@@ -5,9 +5,27 @@ spring:
   application:
     name: zuul
 
+
+#使用SImpleHostRoutingFilter来处理简单路由,也就是不走Eureka的Proxy
+#简单路由在配置path的时候是以“http”或“https”开头的
+
+#使用SendForwordFilter 来处理跳转路由
+#虽然我们请求的是网关，但是产生了响应之后，并不会响应到网关，而是我们给出的跳转地址
+
+
 zuul:
   routes:
     users:
       path: /users/**
       serviceId: bank-user
+    baidu:
+      url: https://www.baidu.com
+    simple:
+      path: /simple/**
+      url: http://www.163.com
+  host:
+    max-total-connections: 200
+    max-per-route-connections: 20
+
+
 
