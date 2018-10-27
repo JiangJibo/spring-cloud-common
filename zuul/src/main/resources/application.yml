@@ -27,5 +27,8 @@ zuul:
     max-total-connections: 200
     max-per-route-connections: 20
 
+  whiteList: 127.0.0.1
+
+
 
 
