@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @author Administrator
  * @create 2018-10-27 20:29
  */
-@Component
+//@Component
 public class WhiteLiterZuulFilter extends ZuulFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WhiteLiterZuulFilter.class);

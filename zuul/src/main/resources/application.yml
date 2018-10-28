@@ -14,8 +14,8 @@ spring:
 
 zuul:
   routes:
-    users:
-      path: /users/**
+    bank-user:
+      path: /bank-user/**
       serviceId: bank-user
     baidu:
       url: https://www.baidu.com
