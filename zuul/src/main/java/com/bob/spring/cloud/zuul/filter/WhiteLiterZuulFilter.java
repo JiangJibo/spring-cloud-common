@@ -7,6 +7,8 @@ import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.netflix.zuul.filters.Route;
+import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,9 @@ public class WhiteLiterZuulFilter extends ZuulFilter {
 
     @Autowired
     private WhiteListProperties whiteListProperties;
+
+    @Autowired
+    private RouteLocator routeLocator;
 
     @Override
     public String filterType() {
@@ -43,14 +48,18 @@ public class WhiteLiterZuulFilter extends ZuulFilter {
     public Object run() {
         RequestContext context = RequestContext.getCurrentContext();
         HttpServletRequest request = context.getRequest();
+        Route route = routeLocator.getMatchingRoute(request.getRequestURI());
+        if (route == null) {
+            return null;
+        }
         String ipAddr = getIpAddr(request);
         LOGGER.info("请求IP地址为：[{}]", ipAddr);
         //配置本地IP白名单，生产环境可放入数据库或者redis中
-        if (!whiteListProperties.isWhiteAddress(ipAddr)) {
-            LOGGER.info("IP地址校验不通过！！！");
+        if (!whiteListProperties.inWhiteList(route.getLocation(), ipAddr)) {
+            LOGGER.info("IP地址校验不通过!!!");
             context.setResponseStatusCode(401);
             context.setSendZuulResponse(false);
-            context.setResponseBody("IpAddr is forbidden!");
+            context.setResponseBody(String.format("IpAddr:[%s] is forbidden!", ipAddr));
         }
         LOGGER.info("IP校验通过。");
         return null;

@@ -1,6 +1,8 @@
 package com.bob.spring.cloud.zuul.filter;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -20,13 +22,13 @@ public class WhiteListProperties {
      * key : serviceId
      * value: IP Set
      */
-    private List<String> whiteList;
+    private Map<String, List<String>> whiteList = new HashMap<>();
 
-    public List<String> getWhiteList() {
+    public Map<String, List<String>> getWhiteList() {
         return whiteList;
     }
 
-    public void setWhiteList(List<String> whiteList) {
+    public void setWhiteList(Map<String, List<String>> whiteList) {
         this.whiteList = whiteList;
     }
 
@@ -34,8 +36,9 @@ public class WhiteListProperties {
      * @param address
      * @return
      */
-    public boolean isWhiteAddress(String address) {
-        Assert.notNull(address, "IP不能为空");
-        return whiteList.contains(address);
+    public boolean inWhiteList(String serviceId, String address) {
+        Assert.notNull(serviceId, "服务名称不能为空");
+        List<String> addrList = whiteList.get(serviceId);
+        return addrList != null && addrList.contains(address);
     }
 }

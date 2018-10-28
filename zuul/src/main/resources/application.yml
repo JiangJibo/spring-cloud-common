@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 8889
 
 spring:
   application:
@@ -11,7 +11,6 @@ spring:
 
 #使用SendForwordFilter 来处理跳转路由
 #虽然我们请求的是网关，但是产生了响应之后，并不会响应到网关，而是我们给出的跳转地址
-
 
 zuul:
   routes:
@@ -27,7 +26,8 @@ zuul:
     max-total-connections: 200
     max-per-route-connections: 20
 
-  whiteList: 127.0.0.1
+  whiteList:
+    bank-user: localhost
 
 
 
