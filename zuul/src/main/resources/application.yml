@@ -6,7 +6,7 @@ spring:
     name: zuul
 
 
-#使用SImpleHostRoutingFilter来处理简单路由,也就是不走Eureka的Proxy
+#使用SimpleHostRoutingFilter来处理简单路由,也就是不走Eureka的Proxy
 #简单路由在配置path的时候是以“http”或“https”开头的
 
 #使用SendForwordFilter 来处理跳转路由
@@ -22,6 +22,7 @@ zuul:
     simple:
       path: /simple/**
       url: http://www.163.com
+
   host:
     max-total-connections: 200
     max-per-route-connections: 20
@@ -34,17 +35,18 @@ zuul:
     enabled: true
     repository: in_memory
     behind-proxy: true #代理之后
-    default-policy:  #可选 - 针对所有的路由配置的策略，除非特别配置了policies
-      limit: 10 #可选 - 每个刷新时间窗口对应的请求数量限制
-      quota: 1000 #可选-  每个刷新时间窗口对应的请求时间限制（秒）
-      refresh-interval: 60 # 刷新时间窗口的时间，默认值 (秒)
-      type: origin #可选 限流方式
     policies:
-      myserviceId: bank-user
-      limit: 10 #可选 - 每个刷新时间窗口对应的请求数量限制
-      quota: 1000 #可选-  每个刷新时间窗口对应的请求时间限制（秒）
-      refresh-interval: 60 # 刷新时间窗口的时间，默认值 (秒)
-      type: URL #可选 限流方式
+      default-policy:  #可选 - 针对所有的路由配置的策略，除非特别配置了policies
+        limit: 10 #可选 - 每个刷新时间窗口对应的请求数量限制
+        quota: 1000 #可选-  每个刷新时间窗口对应的请求时间限制（秒）
+        refresh-interval: 60 # 刷新时间窗口的时间，默认值 (秒)
+        type: origin #可选 限流方式
+
+      bank-user:
+        limit: 10
+        quota: 1000
+        refresh-interval: 60
+        type: URL
 
 
 
