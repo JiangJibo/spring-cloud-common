@@ -15,8 +15,11 @@ spring:
 zuul:
   routes:
     bank-user:
-      path: /bank-user/**
+      path: /bu/**
       serviceId: bank-user
+    bank-account:
+      path: /ba/**
+      serviceId: bank-account
     baidu:
       url: https://www.baidu.com
     simple:
@@ -26,9 +29,6 @@ zuul:
   host:
     max-total-connections: 200
     max-per-route-connections: 20
-
-  whiteList:
-    bank-user: localhost
 
   ratelimit:
     key-prefix:  your-prefix #对应用来标识请求的key的前缀

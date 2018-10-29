@@ -11,3 +11,8 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
+
+zuul:
+  whitelist:    # zuul白名单配置
+    bank-user: localhost
