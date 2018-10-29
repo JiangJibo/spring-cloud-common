@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.Route;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
-import org.springframework.stereotype.Component;
 
 /**
  * 白名单过滤器
@@ -19,9 +18,9 @@ import org.springframework.stereotype.Component;
  * @create 2018-10-27 20:29
  */
 //@Component
-public class WhiteLiterZuulFilter extends ZuulFilter {
+public class WhiteListZuulFilter extends ZuulFilter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(WhiteLiterZuulFilter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(WhiteListZuulFilter.class);
 
     @Autowired
     private WhiteListProperties whiteListProperties;
