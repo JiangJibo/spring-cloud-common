@@ -12,6 +12,7 @@
         <module>config</module>
         <module>eureka</module>
         <module>zuul</module>
+        <module>zipkin</module>
     </modules>
 
 
