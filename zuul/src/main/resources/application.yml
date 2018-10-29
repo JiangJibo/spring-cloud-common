@@ -29,6 +29,25 @@ zuul:
   whiteList:
     bank-user: localhost
 
+  ratelimit:
+    key-prefix:  your-prefix #对应用来标识请求的key的前缀
+    enabled: true
+    repository: in_memory
+    behind-proxy: true #代理之后
+    default-policy:  #可选 - 针对所有的路由配置的策略，除非特别配置了policies
+      limit: 10 #可选 - 每个刷新时间窗口对应的请求数量限制
+      quota: 1000 #可选-  每个刷新时间窗口对应的请求时间限制（秒）
+      refresh-interval: 60 # 刷新时间窗口的时间，默认值 (秒)
+      type: origin #可选 限流方式
+    policies:
+      myserviceId: bank-user
+      limit: 10 #可选 - 每个刷新时间窗口对应的请求数量限制
+      quota: 1000 #可选-  每个刷新时间窗口对应的请求时间限制（秒）
+      refresh-interval: 60 # 刷新时间窗口的时间，默认值 (秒)
+      type: origin #可选 限流方式
+
+
+
 
 
 
