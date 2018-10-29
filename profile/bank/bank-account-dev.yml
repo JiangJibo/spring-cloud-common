@@ -2,7 +2,7 @@ eureka:
   client:
     serviceUrl:
       # 指定Zone和Server地址的映射; 当有多个zone符合时, 默认选择第一个; 一个zone可以有多个应用,也就是多个Server
-      defaultZone: http://jiangjibo.cn:59566/eureka/
+      defaultZone: http://localhost:8761/eureka/
     # 指定给当前Client属于哪个Region
     region: china
     # 指定当前应用有哪些可用的Zone
