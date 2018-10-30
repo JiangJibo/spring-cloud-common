@@ -3,29 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
+        <groupId>com.bob</groupId>
+        <artifactId>spring-cloud-parent</artifactId>
+        <version>1.0.0.SNAPSHOT</version>
+        <relativePath>../parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.bob</groupId>
     <artifactId>spring-cloud-config</artifactId>
-    <version>1.0.0.SNAPSHOT</version>
-
-    <dependencyManagement>
-
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.SR2</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-
-    </dependencyManagement>
 
 
     <dependencies>
@@ -62,41 +47,6 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-            </resource>
-        </resources>
-
-        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-            <plugins>
-
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-                <!--spring-boot为了保护application.yml和application.properties，修改了默认的占位符${...}为@...@-->
-                <!--为了spring boot的yml和properties文件能够使用maven变量替换,使用${}占位符-->
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <configuration>
-                        <encoding>utf-8</encoding>
-                        <useDefaultDelimiters>true</useDefaultDelimiters>
-                    </configuration>
-                </plugin>
-
-            </plugins>
-
-        </pluginManagement>
-
-    </build>
 
 
 </project>

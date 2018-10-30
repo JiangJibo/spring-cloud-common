@@ -13,6 +13,7 @@
         <module>eureka</module>
         <module>zuul</module>
         <module>zipkin</module>
+        <module>parent</module>
     </modules>
 
 

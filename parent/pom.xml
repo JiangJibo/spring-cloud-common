@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bob</groupId>
+    <artifactId>spring-cloud-parent</artifactId>
+    <version>1.0.0.SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <spring-cloud.version>1.4.4.RELEASE</spring-cloud.version>
+        <http-client.version>4.5.5</http-client.version>
+        <zipkin.version>2.11.4</zipkin.version>
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zuul</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka-server</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.marcosbarbero.cloud</groupId>
+                <artifactId>spring-cloud-zuul-ratelimit</artifactId>
+                <version>2.0.6.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${http-client.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.2</version>
+            </dependency>
+
+            <!-- zipkin 界面-->
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-autoconfigure-ui</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+
+            <!-- zipkin 服务类-->
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-server</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <!--spring-boot为了保护application.yml和application.properties，修改了默认的占位符${...}为@...@-->
+                <!--为了spring boot的yml和properties文件能够使用maven变量替换,使用${}占位符-->
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+                        <encoding>utf-8</encoding>
+                        <useDefaultDelimiters>true</useDefaultDelimiters>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+
+        </pluginManagement>
+
+    </build>
+
+
+</project>
