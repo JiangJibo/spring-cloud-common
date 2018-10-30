@@ -6,7 +6,7 @@ spring:
   zipkin:
     enabled: false
   datasource:
-#    schema: classpath:mysql.sql
+    schema: classpath:mysql.sql
     url: jdbc:mysql://localhost:3306/project?useUnicode=true&characterEncoding=UTF8&useSSL=false
     username: root
     password: lanboal
