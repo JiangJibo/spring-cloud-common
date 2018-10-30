@@ -85,6 +85,40 @@
                 <version>${zipkin.version}</version>
             </dependency>
 
+            <!-- zipkin 存储到数据库需要引入此类 -->
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-autoconfigure-storage-mysql</artifactId>
+                <version>${zipkin.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jooq</groupId>
+                        <artifactId>jooq</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.jooq/jooq -->
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq</artifactId>
+                <version>3.11.5</version>
+            </dependency>
+
+
+            <!--保存到数据库需要如下依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.39</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
