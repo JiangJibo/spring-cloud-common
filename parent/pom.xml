@@ -17,7 +17,7 @@
     <properties>
         <spring-cloud.version>1.4.4.RELEASE</spring-cloud.version>
         <http-client.version>4.5.5</http-client.version>
-        <zipkin.version>2.11.4</zipkin.version>
+        <zipkin.version>2.11.6</zipkin.version>
         <ratelimit.version>2.0.6.RELEASE</ratelimit.version>
         <lombok.version>1.18.2</lombok.version>
     </properties>
