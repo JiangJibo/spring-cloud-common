@@ -3,8 +3,15 @@ server:
   port: 9411
 
 spring:
-  application:
-    name: zipkin
+  zipkin:
+    enabled: false
+
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+
 
 
 
