@@ -18,6 +18,8 @@
         <spring-cloud.version>1.4.4.RELEASE</spring-cloud.version>
         <http-client.version>4.5.5</http-client.version>
         <zipkin.version>2.11.4</zipkin.version>
+        <ratelimit.version>2.0.6.RELEASE</ratelimit.version>
+        <lombok.version>1.18.2</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -53,7 +55,7 @@
             <dependency>
                 <groupId>com.marcosbarbero.cloud</groupId>
                 <artifactId>spring-cloud-zuul-ratelimit</artifactId>
-                <version>2.0.6.RELEASE</version>
+                <version>${ratelimit.version}</version>
             </dependency>
 
             <dependency>
@@ -66,7 +68,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.2</version>
+                <version>${lombok.version}</version>
             </dependency>
 
             <!-- zipkin 界面-->
