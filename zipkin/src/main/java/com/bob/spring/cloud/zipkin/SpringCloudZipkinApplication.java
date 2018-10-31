@@ -18,7 +18,7 @@ import zipkin2.server.internal.ZipkinQueryApiV2;
 public class SpringCloudZipkinApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudZipkinApplication.class, new String[] {"--spring.profiles.active=zipkin-http"});
+        SpringApplication.run(SpringCloudZipkinApplication.class, args);
     }
 
 }
