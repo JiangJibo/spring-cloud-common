@@ -16,7 +16,4 @@ spring:
 server:
   port: 8888
 
-# 设置Refresh容器时不需要安全校验
-management:
-  security:
-    enabled: false
+
