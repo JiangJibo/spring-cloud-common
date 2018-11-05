@@ -2,9 +2,6 @@ server:
   #服务注册中心端口号
   port: 8761
 
-spring:
-  application:
-    name: eureka
 
 
 
