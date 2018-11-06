@@ -83,6 +83,12 @@
                 <groupId>io.zipkin.java</groupId>
                 <artifactId>zipkin-server</artifactId>
                 <version>${zipkin.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-boot-starter-log4j2</artifactId>
+                        <groupId>org.springframework.boot</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- zipkin 存储到数据库需要引入此类 -->
